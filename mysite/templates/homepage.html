@@ -1,0 +1,62 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}pinax-project-account{% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block body_base %}
+    <section class="jumbotron">
+        <div class="container">
+            {% include "_messages.html" %}
+            <h1>{% blocktrans %}Welcome to<br>The Virtual Stock Market{% endblocktrans %}</h1>
+            
+            {% if not user.is_authenticated %}
+            {% url "account_login" as login_url %}
+            {% url "account_signup" as signup_url %}
+            <p>{% blocktrans %}Please <a href="{{ login_url }}" class="btn btn-default">Log In</a> or <a href="{{ signup_url }}" class="btn btn-primary">Sign Up</a> to join us!{% endblocktrans %}</p>
+            {% endif %}
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <h2 class="text-center">{% blocktrans %}What is The Virtual Stock Market?{% endblocktrans %}</h2>
+            <p class="lead">
+                {% blocktrans %}
+                <b>VSM</b> is an free, open-source game based on Django and intended to provide a real world look into the exciting world of trading in the stock market.
+                {% endblocktrans %}
+            </p>
+            <div class="feature-columns">
+                <div>
+                    <i class="fa fa-usd fa-3x"></i><br>
+                    {% blocktrans %}
+                    <b>The money</b> isn't real but the trading and experience is!
+                    {% endblocktrans %}
+                </div>
+                <div>
+                    <i class="fa fa-balance-scale fa-3x"></i><br>
+                    {% blocktrans %}
+                    <b>Trading</b> is show with real time stock quotes and information so you are as close to the markets as the experts.
+                    {% endblocktrans %}
+                </div>
+                <div>
+                    <i class="fa fa-line-chart fa-3x"></i><br>
+                    {% blocktrans %}
+                    <b>Watch</b> as you compete for best broker against other people around the world!
+                    {% endblocktrans %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <p class="lead text-center">
+                {% blocktrans %}
+                See <a href="/help">help</a>
+                if you are stuck.
+                {% endblocktrans %}
+            </p>
+        </div>
+    </section>
+{% endblock %}
